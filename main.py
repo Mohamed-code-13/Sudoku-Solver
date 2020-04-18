@@ -38,16 +38,16 @@ def draw_board(game):
         # After three rows, print a new horizontal line
         if i % 3 == 0 and i != 0:
             print('- - - - - - - - - - -')
-        
+
         for j in range(len(game[0])):
             # After three columns, print a new vertical line
             if j % 3 == 0 and j != 0:
                 print('| ', end='')
-            
+
             # If we reach the end of the row, print last number and a new line
             if j == 8:
                 print(game[i][j])
-            
+
             # Else print the number and a space between it and the following number
             else:
                 print(game[i][j], end=' ')
@@ -61,10 +61,10 @@ def solve(game):
     # If there isn't an empty place, return True and it is solved
     if not get:
         return True
-    
+
     # If not, get the position of the new place in (row, col)
     row, col = get
-    
+
     # Try every number from 1 to 10 to get a valid number
     for i in range(1, 10):
         # if the number is valid, replace the zero to this number
@@ -75,8 +75,8 @@ def solve(game):
             # If it works, it will return True and it's solved
             if solve(game):
                 return True
-            
-            # Else set it to zero 
+
+            # Else set it to zero
             game[row][col] = 0
 
     return False
@@ -91,7 +91,7 @@ def get_empty(game):
         for j in range(len(game[0])):
             if game[i][j] == 0:
                 return (i, j)  # i for row. j for column
-    
+
 
 # The valid function will check if the number
 # in this position in this board is valid or not.
@@ -115,7 +115,7 @@ def is_valid(game, num, pos):
         for j in range(box_x * 3, box_x * 3 + 3):
             if game[i][j] == num and (i, j) != pos:
                 return False
-    
+
     return True  # Return True if the number is valid
 
 
